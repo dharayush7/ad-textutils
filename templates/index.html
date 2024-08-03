@@ -11,9 +11,9 @@
             <h1 class="text">WelCome to TextUtils</h1>
         </div>
         <div class="container">
-            <form action="/analyze" method="get">
+            <form action="/analyze" method="post">{% csrf_token %}
                 <label for="exampleFormControlTextarea1" class="form-label">Text Area</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text" required></textarea>
                 <div class="form-check form-switch mt-3">
                     <input class="form-check-input" type="checkbox" role="switch" name="removePunc" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Remove Punctuation</label>
@@ -34,7 +34,6 @@
                 <div class="container mt-3">
                     <button type="submit" class="btn btn-success">Analyze</button>
                 </div>
-
             </form>
         </div>
     </div>

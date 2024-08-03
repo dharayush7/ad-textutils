@@ -53,11 +53,11 @@ def charCount(text: str):
 
 
 def analyzed(request, ):
-    inputText = request.GET.get('text', 'default')
-    removePunc = request.GET.get('removePunc', 'off')
-    upperCase = request.GET.get('upperCase', 'off')
-    newLineRemove = request.GET.get('newLineRemove', 'off')
-    extraSpaceRemove = request.GET.get('extraSpaceRemove', 'off')
+    inputText = request.POST.get('text', 'default')
+    removePunc = request.POST.get('removePunc', 'off')
+    upperCase = request.POST.get('upperCase', 'off')
+    newLineRemove = request.POST.get('newLineRemove', 'off')
+    extraSpaceRemove = request.POST.get('extraSpaceRemove', 'off')
 
     purpose = []
     analyzedText = inputText
@@ -66,10 +66,12 @@ def analyzed(request, ):
         purpose.append("Remove Punctuation")
         result = removePuncDef(inputText)
         analyzedText = result
+
     if upperCase == "on":
         purpose.append("UPPER CASE")
         result = upperCaseDef(analyzedText)
         analyzedText = result
+
     if newLineRemove == "on":
         purpose.append("New Line Remover")
         result = newLineRemoveDef(analyzedText)
@@ -81,7 +83,7 @@ def analyzed(request, ):
         analyzedText = result
 
     if len(purpose) == 0:
-        return HttpResponse("Please check any checkBoxes")
+        return HttpResponse("Please on any switch")
 
     count = charCount(analyzedText)
 
